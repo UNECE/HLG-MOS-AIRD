@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Ready Dissemination Project Hub</title>
+    
+    <!-- CONFIGURATION: Update these with your GitHub details -->
+    <script>
+        // Automatically detect from GitHub Pages URL, or set manually
+        const GITHUB_ORG = 'UNECE';  // Your organization name
+        const REPO_NAME = 'HLG-MOS-AIRD';  // Your repository name
+        
+        // Build base URL
+        const REPO_URL = `https://github.com/${GITHUB_ORG}/${REPO_NAME}`;
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .tool-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tool-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .tool-button:hover {
+            background: #5568d3;
+        }
+
+        .work-packages {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .work-packages h2 {
+            color: #f57c00;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .wp-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .wp-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .wp-item h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .wp-item p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .quick-links {
+            background: #e3f2fd;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .quick-links h2 {
+            color: #1976d2;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .quick-link {
+            background: white;
+            color: #1976d2;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #1976d2;
+        }
+
+        .quick-link:hover {
+            background: #1976d2;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wp-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 AI-Ready Dissemination Project</h1>
+            <p>Collaborative Hub for Knowledge Sharing, Quality Frameworks, Technical Approaches & External Communication</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <p>Welcome to our project collaboration hub! Everything you need to work together effectively is right here on GitHub.</p>
+            </div>
+
+            <div class="work-packages">
+                <h2>📊 Our Work Packages</h2>
+                <div class="wp-list">
+                    <div class="wp-item">
+                        <h4>WP1</h4>
+                        <p>Knowledge Sharing & Case Studies</p>
+                    </div>
+                    <div class="wp-item">
+                        <h4>WP2</h4>
+                        <p>Quality Frameworks for AI-Ready Data</p>
+                    </div>
+                    <div class="wp-item">
+                        <h4>WP3</h4>
+                        <p>Technical Approach for AI-Ready Data</p>
+                    </div>
+                    <div class="wp-item">
+                        <h4>WP4</h4>
+                        <p>Communication with External Actors</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px; font-size: 1.8em;">🛠️ Collaboration Tools</h2>
+
+            <div class="tools-grid">
+                <a href="#" class="tool-card" onclick="openLink('issues'); return false;">
+                    <div class="tool-icon">📋</div>
+                    <h3>Tasks & Issues</h3>
+                    <p>Create, assign, and track tasks for each work package. Add labels, priorities, and due dates.</p>
+                    <span class="tool-button">View Tasks →</span>
+                </a>
+
+                <a href="#" class="tool-card" onclick="openLink('projects'); return false;">
+                    <div class="tool-icon">📊</div>
+                    <h3>Project Board</h3>
+                    <p>Visual Kanban board showing all work. Drag and drop tasks between columns to track progress.</p>
+                    <span class="tool-button">View Board →</span>
+                </a>
+
+                <a href="#" class="tool-card" onclick="openLink('discussions'); return false;">
+                    <div class="tool-icon">💬</div>
+                    <h3>Team Discussions</h3>
+                    <p>Chat with your team, ask questions, share updates, and post meeting notes.</p>
+                    <span class="tool-button">Join Chat →</span>
+                </a>
+
+                <a href="#" class="tool-card" onclick="openLink('wiki'); return false;">
+                    <div class="tool-icon">📝</div>
+                    <h3>Shared Wiki</h3>
+                    <p>Collaborative documents for each work package. Everyone can edit, with full version history.</p>
+                    <span class="tool-button">View Docs →</span>
+                </a>
+            </div>
+
+            <div class="quick-links">
+                <h2>⚡ Quick Actions</h2>
+                <div class="links-grid">
+                    <a href="#" class="quick-link" onclick="openLink('issues/new'); return false;">+ Create New Task</a>
+                    <a href="#" class="quick-link" onclick="openLink('discussions/new'); return false;">+ Start Discussion</a>
+                    <a href="#" class="quick-link" onclick="openLink('wiki'); return false;">📖 Edit Wiki</a>
+                    <a href="#" class="quick-link" onclick="openLink('projects'); return false;">📊 Update Board</a>
+                </div>
+            </div>
+
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 25px; text-align: center;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">📱 Access Anywhere</h3>
+                <p style="color: #666; margin-bottom: 15px;">Download the GitHub mobile app to stay connected on the go!</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://apps.apple.com/app/github/id1477376905" style="text-decoration: none; color: #667eea; font-weight: 600;">📱 iOS App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.github.android" style="text-decoration: none; color: #667eea; font-weight: 600;">📱 Android App</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ for the AI-Ready Dissemination Project</p>
+            <p style="margin-top: 10px;">Powered by <a href="https://github.com" target="_blank">GitHub</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to open links with the correct repository URL
+        function openLink(path) {
+            window.open(`${REPO_URL}/${path}`, '_blank');
+        }
+        
+        // Optional: Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.tool-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.5s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+            
+            // Display the repository URL for reference
+            console.log('Repository URL:', REPO_URL);
+        });
+    </script>
+</body>
+</html>
